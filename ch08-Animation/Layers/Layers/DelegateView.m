@@ -39,10 +39,13 @@
   return self;
 }
 
+//Having UIView implement displayLayer: seldom makes sense in my opinion.
+//可以尽可能 用UIKit
 
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
  // CGContextSaveGState 记录上下文的状态，下面是进行上下文切换
+//  Because Core Animation does not set a UIKit graphics context, you need to call UIGraphicsPushContext before calling UIKit methods, and UIGraphicsPopContext before returning.
   UIGraphicsPushContext(ctx);  //并不是保存上下文当前状态，而是完全切换上下文，加入在当前上下文绘制了什么东西，想要在位图上下文绘制不同的东西
   [[UIColor whiteColor] set];
   UIRectFill(layer.bounds);
