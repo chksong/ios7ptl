@@ -30,6 +30,7 @@
 
 @implementation LayersViewController
 
+//书的 8.3.1--8.3.3
 - (void)viewDidLoad {
   [super viewDidLoad];
   UIImage *image = [UIImage imageNamed:@"pushing"];
