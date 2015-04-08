@@ -45,7 +45,7 @@
 - (void)dropAnimate:(UIGestureRecognizer *)recognizer {
   [UIView
    animateWithDuration:3 animations:^{
-    // recognizer.enabled = NO;
+     recognizer.enabled = NO;
      self.circleView.center = CGPointMake(100, 300);
    }
    completion:^(BOOL finished){
@@ -54,7 +54,7 @@
         self.circleView.center = CGPointMake(250, 300);
       }
       completion:^(BOOL finished){
-     //   recognizer.enabled = YES;
+        recognizer.enabled = YES;
       }
       ];
    }];
