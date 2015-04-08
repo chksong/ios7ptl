@@ -35,7 +35,7 @@
   UIImage *image = [UIImage imageNamed:@"pushing"];
   self.view.layer.contentsScale = [[UIScreen mainScreen] scale];
   self.view.layer.contentsGravity = kCAGravityCenter;
-  self.view.layer.contents = (id)[image CGImage];
+  self.view.layer.contents = (id)[image CGImage]; // contents 为时id类型，要复制为CGImageRef 而不是UIImage，要强制转换
   
   UIGestureRecognizer *g;
   g = [[UITapGestureRecognizer alloc]
@@ -46,6 +46,7 @@
 
 - (void)performFlip:(UIGestureRecognizer *)recognizer {
   UIView *delegateView = [[DelegateView alloc] initWithFrame:self.view.frame];
+    
   [UIView transitionFromView:self.view toView:delegateView duration:1 options:UIViewAnimationOptionTransitionFlipFromRight completion:nil];
 }
 
