@@ -39,8 +39,11 @@
   return self;
 }
 
+
+
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-  UIGraphicsPushContext(ctx);
+ // CGContextSaveGState 记录上下文的状态，下面是进行上下文切换
+  UIGraphicsPushContext(ctx);  //并不是保存上下文当前状态，而是完全切换上下文，加入在当前上下文绘制了什么东西，想要在位图上下文绘制不同的东西
   [[UIColor whiteColor] set];
   UIRectFill(layer.bounds);
 
