@@ -50,6 +50,7 @@
 
 - (void)drop:(UIGestureRecognizer *)recognizer {
   [CATransaction setAnimationDuration:18.0];  //默认支持 滑动到指定位置的时间
+    
   NSArray *layers = self.view.layer.sublayers;
   CALayer *layer = [layers objectAtIndex:0];
   CGPoint toPoint = CGPointMake(200, 250);
