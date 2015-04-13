@@ -31,8 +31,10 @@
       forKeyPath:(NSString *)keyPath
         duration:(CFTimeInterval)duration
            delay:(CFTimeInterval)delay {
+    
+  //当图层到 透明时候时候，使用显示的图层动画---》慢慢个过渡获取
   [CATransaction begin];
-  [CATransaction setDisableActions:YES];
+  [CATransaction setDisableActions:YES]; // 禁止 隐式的添加属性的动画
   [self setValue:value forKeyPath:keyPath];
   CABasicAnimation *anim;
   anim = [CABasicAnimation animationWithKeyPath:keyPath];
@@ -43,6 +45,8 @@
   anim.toValue = value;
   [self addAnimation:anim forKey:keyPath];
   [CATransaction commit];
+//
+
 }
 
 @end
