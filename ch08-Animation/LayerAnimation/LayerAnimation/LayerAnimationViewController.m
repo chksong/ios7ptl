@@ -49,20 +49,20 @@
 }
 
 - (void)drop:(UIGestureRecognizer *)recognizer {
-  [CATransaction setAnimationDuration:2.0];
+  [CATransaction setAnimationDuration:6.0];  //默认支持 滑动到指定位置的时间
   NSArray *layers = self.view.layer.sublayers;
   CALayer *layer = [layers objectAtIndex:0];
   CGPoint toPoint = CGPointMake(200, 250);
   [layer setPosition:toPoint];
 
-  CABasicAnimation *anim = [CABasicAnimation
-                            animationWithKeyPath:@"opacity"];
-  anim.fromValue = @1.0;
-  anim.toValue = @0.0;
-  anim.autoreverses = YES;
-  anim.repeatCount = INFINITY;
-  anim.duration = 2.0;
-  [layer addAnimation:anim forKey:@"anim"];
+//  CABasicAnimation *anim = [CABasicAnimation
+//                            animationWithKeyPath:@"opacity"];
+//  anim.fromValue = @1.0;
+//  anim.toValue = @0.0;
+//  anim.autoreverses = YES;
+//  anim.repeatCount = INFINITY; //不限期的 不停
+//  anim.duration = 2.0;
+//  [layer addAnimation:anim forKey:@"anim"];
 
   NSArray *views = self.view.subviews;
   UIView *view = [views objectAtIndex:0];
