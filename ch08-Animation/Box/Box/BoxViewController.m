@@ -52,36 +52,36 @@ static CATransform3D MakePerspetiveTransform() {
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  CATransform3D transform;
-  transform = CATransform3DMakeTranslation(0, -kSize/2, 0);
+    CATransform3D transform;
+  transform = CATransform3DMakeTranslation(0, -kSize/2, 0); // 设置描点
   transform = CATransform3DRotate(transform, M_PI_2, 1.0, 0, 0);
-  self.topLayer = [self layerWithColor:[UIColor redColor] 
+  self.topLayer = [self layerWithColor:[UIColor redColor]
                              transform:transform];
   
   transform = CATransform3DMakeTranslation(0, kSize/2, 0);
-  transform = CATransform3DRotate(transform, M_PI_2, 1.0, 0, 0);
+//  transform = CATransform3DRotate(transform, M_PI_2, 1.0, 0, 0);
   self.bottomLayer = [self layerWithColor:[UIColor greenColor]
                                 transform:transform];
 
-  transform = CATransform3DMakeTranslation(kSize/2, 0, 0);
-  transform = CATransform3DRotate(transform, M_PI_2, 0, 1, 0);
-  self.rightLayer = [self layerWithColor:[UIColor blueColor] 
-                               transform:transform];
-  
-  transform = CATransform3DMakeTranslation(-kSize/2, 0, 0);
-  transform = CATransform3DRotate(transform, M_PI_2, 0, 1, 0);
-  self.leftLayer = [self layerWithColor:[UIColor cyanColor]
-                              transform:transform];
-  
-  transform = CATransform3DMakeTranslation(0, 0, -kSize/2);
-  transform = CATransform3DRotate(transform, M_PI_2, 0, 0, 0);
-  self.backLayer = [self layerWithColor:[UIColor yellowColor]
-                              transform:transform];
-  
-  transform = CATransform3DMakeTranslation(0, 0, kSize/2);
-  transform = CATransform3DRotate(transform, M_PI_2, 0, 0, 0);
-  self.frontLayer = [self layerWithColor:[UIColor magentaColor] 
-                               transform:transform];
+//  transform = CATransform3DMakeTranslation(kSize/2, 0, 0);
+//  transform = CATransform3DRotate(transform, M_PI_2, 0, 1, 0);
+//  self.rightLayer = [self layerWithColor:[UIColor blueColor] 
+//                               transform:transform];
+//
+//  transform = CATransform3DMakeTranslation(-kSize/2, 0, 0);
+//  transform = CATransform3DRotate(transform, M_PI_2, 0, 1, 0);
+//  self.leftLayer = [self layerWithColor:[UIColor cyanColor]
+//                              transform:transform];
+//  
+//  transform = CATransform3DMakeTranslation(0, 0, -kSize/2);
+//  transform = CATransform3DRotate(transform, M_PI_2, 0, 0, 0);
+//  self.backLayer = [self layerWithColor:[UIColor yellowColor]
+//                              transform:transform];
+//  
+//  transform = CATransform3DMakeTranslation(0, 0, kSize/2);
+//  transform = CATransform3DRotate(transform, M_PI_2, 0, 0, 0);
+//  self.frontLayer = [self layerWithColor:[UIColor magentaColor] 
+//                               transform:transform];
 
   self.view.layer.sublayerTransform = MakePerspetiveTransform();  
   
