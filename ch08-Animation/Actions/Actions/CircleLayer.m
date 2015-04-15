@@ -28,6 +28,8 @@
 #import "CircleLayer.h"
 
 @implementation CircleLayer
+//1：通过@synthesize 指令告诉编译器在编译期间产生getter/setter方法。
+//2：通过@dynamic指令，自己实现方法。
 @dynamic radius;
 
 - (id)init {
