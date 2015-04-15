@@ -38,10 +38,13 @@ const CGFloat kPanScale = 1./100.;
   CALayer *layer = [CALayer layer];
   layer.backgroundColor = [color CGColor];
   layer.bounds = CGRectMake(0, 0, kSize, kSize);
+    
+  // 通过postion和zpostion而不是平移 来构造方形
   layer.position = CGPointMake(x, y);
   layer.zPosition = z;
   layer.transform = transform;
   [self.contentLayer addSublayer:layer];
+    
   return layer;
 }
 
@@ -51,6 +54,8 @@ static CATransform3D MakeSideRotation(CGFloat x, CGFloat y, CGFloat z) {
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+    // 现在代码
   CATransformLayer *contentLayer = [CATransformLayer layer];
   contentLayer.frame = self.view.layer.bounds;
   CGSize size = contentLayer.bounds.size;
@@ -87,6 +92,7 @@ static CATransform3D MakeSideRotation(CGFloat x, CGFloat y, CGFloat z) {
   UIGestureRecognizer *g = [[UIPanGestureRecognizer alloc] 
                             initWithTarget:self
                             action:@selector(pan:)];
+    
   [self.view addGestureRecognizer:g];
 }
 
