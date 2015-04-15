@@ -60,6 +60,7 @@
 
 - (id < CAAction >)actionForKey:(NSString *)key {
   if ([self presentationLayer] != nil) {
+    //更改半径会导致原型渐渐消失 并且出现新圆形
     if ([key isEqualToString:@"radius"]) {
       CABasicAnimation *anim = [CABasicAnimation
                                 animationWithKeyPath:@"radius"];
