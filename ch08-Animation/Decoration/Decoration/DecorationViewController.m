@@ -35,12 +35,12 @@
   CALayer *layer;
   layer = [CALayer layer];
   layer.frame = CGRectMake(100, 100, 100, 100);
-  layer.cornerRadius = 10;
-  layer.backgroundColor = [[UIColor redColor] CGColor];
-  layer.borderColor = [[UIColor blueColor] CGColor];
-  layer.borderWidth = 5;
-  layer.shadowOpacity = 0.5;
-  layer.shadowOffset = CGSizeMake(3.0, 3.0);
+  layer.cornerRadius = 10;   //圆角
+  layer.backgroundColor = [[UIColor redColor] CGColor]; // 背景色
+  layer.borderColor = [[UIColor blueColor] CGColor];    // 边框色
+  layer.borderWidth = 5;                                // 边框宽度。
+  layer.shadowOpacity = 1;                              // 阴影的不透明度
+  layer.shadowOffset = CGSizeMake(13.0, 13.0);          // 阴影偏离
   [self.view.layer addSublayer:layer];
   
   layer = [CALayer layer];
@@ -48,8 +48,8 @@
   layer.cornerRadius = 10;
   layer.backgroundColor = [[UIColor greenColor] CGColor];
   layer.borderWidth = 5;
-  layer.shadowOpacity = 0.5;
-  layer.shadowOffset = CGSizeMake(3.0, 3.0);
+  layer.shadowOpacity = 0.1 ;
+  layer.shadowOffset = CGSizeMake(13.0, 13.0);
   [self.view.layer addSublayer:layer];
 }
 
