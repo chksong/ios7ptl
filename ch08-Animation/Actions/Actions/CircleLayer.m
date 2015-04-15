@@ -51,6 +51,9 @@
   CGContextFillPath(ctx);
 }
 
+
+// 在init方法里调用 setNeedsDisplay 这样的图层drawincontext会在第一次减价图层到图层时候，被调用
+// 覆盖needsdisplayForKey 方法。这样五楼合适修改白净都会自动重绘
 + (BOOL)needsDisplayForKey:(NSString *)key {
   if ([key isEqualToString:@"radius"]) {
     return YES;
