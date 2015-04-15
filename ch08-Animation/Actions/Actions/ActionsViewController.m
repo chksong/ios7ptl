@@ -39,6 +39,8 @@
                                   dictionaryWithDictionary:
                                   [circleLayer actions]];
   actions[@"position"] = anim;
+    
+    
   
   CABasicAnimation *fadeAnim = [CABasicAnimation 
                                 animationWithKeyPath:@"opacity"];
