@@ -53,9 +53,10 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
   CGPoint point = [self randomPoint];
   UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.box1
                                                   snapToPoint:point];
-  snap.damping = 0.25;
+  snap.damping = 0.95;   //是唯一科 该值越大，移动的越慢
   [self addTemporaryBehavior:snap];
 }
+
 
 - (IBAction)attach {
   UIAttachmentBehavior *attach1 = [[UIAttachmentBehavior alloc] initWithItem:self.box1
@@ -107,6 +108,7 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
                              afterDelay:1];
 }
 
+//生成随机的点
 - (CGPoint)randomPoint {
   CGSize size = self.view.bounds.size;
   return CGPointMake(arc4random_uniform(size.width),
