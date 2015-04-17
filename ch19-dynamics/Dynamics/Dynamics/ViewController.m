@@ -91,6 +91,7 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
                                                                           self.box2]];
 
    // 加速到 1000p/s^2时 所需要的力。
+   // 重力学，UIKIT 没有地面，如果没有被挡住，一直会下路。
   gravity.action = ^{
     NSLog(@"%@", NSStringFromCGPoint(self.box1.center));
   };
@@ -106,6 +107,10 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
                                                           mode:UIPushBehaviorModeInstantaneous];
   push.pushDirection = CGVectorMake(3, 0);
   [self addTemporaryBehavior:push];
+    
+    //当动力项 互相碰撞时候，集体行为取决于相对的动量和弹性
+    
+    //边界是一条质量无穷大的轨道，因此边界被碰撞时候，不会移动
 }
 
 - (void)addTemporaryBehavior:(UIDynamicBehavior *)behavior {
