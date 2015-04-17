@@ -57,7 +57,7 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
   [self addTemporaryBehavior:snap];
 }
 
-
+//附照行为
 - (IBAction)attach {
   UIAttachmentBehavior *attach1 = [[UIAttachmentBehavior alloc] initWithItem:self.box1
                                                            offsetFromCenter:UIOffsetMake(25, 25)
@@ -77,7 +77,12 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
 - (IBAction)push {
   UIPushBehavior *push = [[UIPushBehavior alloc] initWithItems:@[self.box1]
                                                           mode:UIPushBehaviorModeContinuous];
-  push.pushDirection = CGVectorMake(1, 1);
+   
+  //推力向量
+  //i UIKit 牛顿是1 UIKIT 千克加速到 100p/s^2时 所需要的力。
+  push.pushDirection = CGVectorMake(1, 0);
+  
+  //还可以通过 角度 和 弧度来
   [self.dynamicAnimator addBehavior:push];
 }
 
