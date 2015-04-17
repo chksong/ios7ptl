@@ -80,7 +80,7 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
    
   //推力向量
   //i UIKit 牛顿是1 UIKIT 千克加速到 100p/s^2时 所需要的力。
-  push.pushDirection = CGVectorMake(1, 0);
+  push.pushDirection = CGVectorMake(0, 1);
   
   //还可以通过 角度 和 弧度来
   [self.dynamicAnimator addBehavior:push];
@@ -89,6 +89,8 @@ const CGPoint kInitialPoint2 = { .x = 500, .y = 300 };
 - (IBAction)gravity {
   UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[self.box1,
                                                                           self.box2]];
+
+   // 加速到 1000p/s^2时 所需要的力。
   gravity.action = ^{
     NSLog(@"%@", NSStringFromCGPoint(self.box1.center));
   };
