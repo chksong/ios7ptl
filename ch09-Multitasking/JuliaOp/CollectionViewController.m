@@ -73,6 +73,7 @@ unsigned int countOfCores() {
   [self useAllScales];
 
   // No longer needed in iOS 7
+  // 设置最大数量的并发操作
   self.queue.maxConcurrentOperationCount = countOfCores();
 }
 
