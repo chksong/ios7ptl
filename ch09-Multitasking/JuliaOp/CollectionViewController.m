@@ -49,10 +49,20 @@ unsigned int countOfCores() {
     [scales addObject:@(scale)];
   }
   self.scales = scales;
+//    "0.03125",
+//    "0.0625",
+//    "0.125",
+//    "0.25",
+//    "0.5",
+//    1,
+//    2
+    
+  NSLog(@"[useAllScales] scales=%@" , self.scales) ;
 }
 
 - (void)useMinimumScales {
   self.scales = [self.scales subarrayWithRange:NSMakeRange(0, 1)];
+     NSLog(@"[useMinimumScales] scales=%@" , self.scales) ;
 }
 
 - (void)viewDidLoad {
@@ -80,11 +90,13 @@ unsigned int countOfCores() {
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewWillBeginDragging") ;
   [self.queue cancelAllOperations];
   [self useMinimumScales];
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+     NSLog(@"scrollViewWillBeginDecelerating") ;
   [self useAllScales];
 }
 
