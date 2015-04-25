@@ -42,6 +42,7 @@ complex long double f(const complex long double z,
   NSUInteger height = self.height;
   NSUInteger width = self.width;
   
+ // 配置bits[] 保存位图数据
   NSUInteger components = 4;
   NSMutableData *
   data = [NSMutableData dataWithLength:
@@ -57,6 +58,9 @@ complex long double f(const complex long double z,
       if (self.isCancelled) {
         return;
       }
+        
+      // 计算茱莉亚的值，并且更新bits
+      // 每个像素做多可能
       NSUInteger iteration = 0;
       complex long double z = (2.0 * kScale * x)/width - kScale
         + I*((2.0 * kScale * y)/width - kScale);
@@ -72,6 +76,7 @@ complex long double f(const complex long double z,
     }
   }
   
+  //创建位图并保存在 self,imgage
   CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
   CGContextRef context = CGBitmapContextCreate(bits,
                                                width,
@@ -89,5 +94,11 @@ complex long double f(const complex long double z,
   CGImageRelease(cgImage);
   CGContextRelease(context);
 }
+
+//下面的这个操作的关键特性，
+//1， 所有的必需的数据都会在 开始之前传递给操作，操作运行过程中，不需要和别的对象交互，获益就不用枷锁。
+//2， 操作完成之后，结果报错在本地的ivar中，，， 还是为了避免枷锁，所以用委托方法来更新操作外边的某些数据，但是你看到 用完成块更简单
+//3  操作定期检查iscancelled属性， 以便到收到退出请求时候，能够推退出。
+
 
 @end
