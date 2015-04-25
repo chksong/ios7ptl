@@ -31,6 +31,7 @@
 
 @implementation JuliaCell
 
+//重用单元格,重用时，要取消当前的操作，当前的所有的操作
 - (void)prepareForReuse {
   [self.operations makeObjectsPerformSelector:@selector(cancel)];
   [self.operations removeAllObjects];
@@ -105,9 +106,12 @@
   for (CGFloat scale = minScale; scale <= maxScale; scale *= 2) {
     JuliaOperation *op = [self operationForScale:scale seed:seed];
     if (prevOp) {
-      [op addDependency:prevOp];
+      [op addDependency:prevOp];  //依赖操作，确保高分辨图片不会再低分辨率图片之前调度。
     }
+      
     [self.operations addObject:op];  //array
+     
+    // 加入队列
     [queue addOperation:op];
     prevOp = op;
   }
