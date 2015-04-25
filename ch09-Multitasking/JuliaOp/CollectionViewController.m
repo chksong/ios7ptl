@@ -49,6 +49,7 @@ unsigned int countOfCores() {
     [scales addObject:@(scale)];
   }
   self.scales = scales;
+    
 //    "0.03125",
 //    "0.0625",
 //    "0.125",
@@ -60,6 +61,7 @@ unsigned int countOfCores() {
   NSLog(@"[useAllScales] scales=%@" , self.scales) ;
 }
 
+//选择最小一个
 - (void)useMinimumScales {
   self.scales = [self.scales subarrayWithRange:NSMakeRange(0, 1)];
      NSLog(@"[useMinimumScales] scales=%@" , self.scales) ;
@@ -89,12 +91,14 @@ unsigned int countOfCores() {
   return cell;
 }
 
+// 滚动加速
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     NSLog(@"scrollViewWillBeginDragging") ;
   [self.queue cancelAllOperations];
   [self useMinimumScales];
 }
 
+//开始减速了
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
      NSLog(@"scrollViewWillBeginDecelerating") ;
   [self useAllScales];
