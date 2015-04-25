@@ -42,6 +42,7 @@
   self.operations = [NSMutableArray new];
 }
 
+
 - (JuliaOperation *)operationForScale:(CGFloat)scale
                                  seed:(NSUInteger)seed {
   JuliaOperation *op = [[JuliaOperation alloc] init];
@@ -73,6 +74,7 @@
     }
   };
   
+  //先生成小的图像
   if (scale < 0.5) {
     op.queuePriority = NSOperationQueuePriorityVeryHigh;
   }
@@ -89,19 +91,23 @@
 - (void)configureWithSeed:(NSUInteger)seed
                     queue:(NSOperationQueue *)queue
                    scales:(NSArray *)scales {
+    
   CGFloat maxScale = [[UIScreen mainScreen] scale];
   self.contentScaleFactor = maxScale;
 
   NSUInteger kIterations = 6;
   CGFloat minScale = maxScale/pow(2, kIterations);
 
+    //In [3]: 2/(64.0)
+   // Out[3]: 0.03125
+    
   JuliaOperation *prevOp = nil;
   for (CGFloat scale = minScale; scale <= maxScale; scale *= 2) {
     JuliaOperation *op = [self operationForScale:scale seed:seed];
     if (prevOp) {
       [op addDependency:prevOp];
     }
-    [self.operations addObject:op];
+    [self.operations addObject:op];  //array
     [queue addOperation:op];
     prevOp = op;
   }
