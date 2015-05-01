@@ -37,11 +37,14 @@ const NSUInteger kSliceCount = 6;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+//  伴随时间，对重力项，施加行为的引擎
   self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 
   CGRect frame = CGRectMake(0, 0,
                             kShapeDimension,
                             kShapeDimension);
+    
+//  拖拽效果~~~~~~视图
   DraggableView *dragView = [[DraggableView alloc] initWithFrame:frame
                                                         animator:self.animator];
   dragView.center = CGPointMake(self.view.center.x / 4,
@@ -49,19 +52,27 @@ const NSUInteger kSliceCount = 6;
   dragView.alpha = 0.5;
   [self.view addSubview:dragView];
 
+  // 缺省的行为的下落和碰撞
   DefaultBehavior *defaultBehavior = [DefaultBehavior new];
   [self.animator addBehavior:defaultBehavior];
-  self.defaultBehavior = defaultBehavior;
-
+   self.defaultBehavior = defaultBehavior;
+    
+   
   TearOffBehavior *tearOffBehavior = [[TearOffBehavior alloc]
                                       initWithDraggableView:dragView
                                       anchor:dragView.center
                                       handler:^(DraggableView *tornView,
                                                 DraggableView *newPinView) {
+                                          
+                                          
+                                          tornView.alpha =1 ;
+                                          
+//                                       // 对旧的产生动画
                                         tornView.alpha = 1;
                                         [defaultBehavior addItem:tornView];
 
                                         // Double-tap to trash
+                                        // 双击粉碎效果
                                         UITapGestureRecognizer *
                                         tap = [[UITapGestureRecognizer alloc]
                                                initWithTarget:self
@@ -79,7 +90,11 @@ const NSUInteger kSliceCount = 6;
   NSArray *subviews = [self sliceView:view
                              intoRows:kSliceCount
                               columns:kSliceCount];
-
+    
+// 动力学动画类只是一个按照他的行为，提供原则
+// 随着时间不断的调整其动力项位置和旋转的对象， 他不是一个视图图层的固有部分， 甚至不关心其动力项是否是视图
+// 只要不打算用多个动力学动画类对同一个视图进行动画，那么在同一个视图的层次结构中有多个动力学动画类是没有问题
+// 使用多个动力学动画类队同一个视图进行动画是未定义的，因为动画类没有办法协调
   // Create a new animator
   UIDynamicAnimator *
   trashAnimator = [[UIDynamicAnimator alloc]
