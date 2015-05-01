@@ -32,7 +32,7 @@
   if (self) {
     _active = YES;
       
-    // 添加附 附着效果， 回到远带你
+    // 添加附 附着效果， 回到原点
     [self addChildBehavior:[[UISnapBehavior alloc] initWithItem:view
                                                     snapToPoint:anchor]];
 
@@ -45,18 +45,24 @@
       //@property (nonatomic,copy) void (^action)(void);
     self.action = ^{
       TearOffBehavior *strongself = weakself;
-        
+      
+         // 大于指定的距离
       if (! PointsAreWithinDistance(view.center, anchor, distance)) {
         if (strongself.active) {
+           //产生新的 视图，新的动力行为，并且关联
           DraggableView *newView = [view copy];
           [view.superview addSubview:newView];
+            
           TearOffBehavior *newTearOff = [[[strongself class] alloc]
                                          initWithDraggableView:newView
                                          anchor:anchor
                                          handler:handler];
           newTearOff.active = NO;
+           //动画引擎  添加新的行为
           [strongself.dynamicAnimator addBehavior:newTearOff];
           handler(view, newView);
+           
+            //动画引擎  删除就的新的行为
           [strongself.dynamicAnimator removeBehavior:strongself];
         }
       }
