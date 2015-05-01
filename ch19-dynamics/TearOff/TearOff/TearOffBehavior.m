@@ -31,7 +31,8 @@
   self = [super init];
   if (self) {
     _active = YES;
-
+      
+    // 添加附 附着效果， 回到远带你
     [self addChildBehavior:[[UISnapBehavior alloc] initWithItem:view
                                                     snapToPoint:anchor]];
 
@@ -39,8 +40,12 @@
                            CGRectGetHeight(view.bounds));
 
     TearOffBehavior * __weak weakself = self;
+     
+      // When running, the dynamic animator calls the action block on every animation step.
+      //@property (nonatomic,copy) void (^action)(void);
     self.action = ^{
       TearOffBehavior *strongself = weakself;
+        
       if (! PointsAreWithinDistance(view.center, anchor, distance)) {
         if (strongself.active) {
           DraggableView *newView = [view copy];
@@ -68,7 +73,7 @@ BOOL PointsAreWithinDistance(CGPoint p1,
                              CGFloat distance) {
   CGFloat dx = p1.x - p2.x;
   CGFloat dy = p1.y - p2.y;
-  CGFloat currentDistance = hypotf(dx, dy);
+  CGFloat currentDistance = hypotf(dx, dy); // sqrt(x*x + y*y)
   return (currentDistance < distance);
 }
 
