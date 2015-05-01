@@ -22,6 +22,12 @@
 //
 #import <UIKit/UIKit.h>
 
+// 自定义的UIDynamicBehavior 这对分组很有帮助
+// 有可能要在要系统中，对每个动力项目，施加重力和碰撞，可以自动一个UIDynamicBehavior子类，中使用
+// 使用addchildBehavior讲他们打包一个单独的动力行为中，
+// 通常不用在内置的行为中使用 addChildBehavior
+
+// 尽量保持简单，如果出创建比较傲复杂的层次结构，调试将变得的非常混乱和复杂
 @interface DefaultBehavior : UIDynamicBehavior
 - (void)addItem:(id<UIDynamicItem>)item;
 - (void)removeItem:(id<UIDynamicItem>)item;
