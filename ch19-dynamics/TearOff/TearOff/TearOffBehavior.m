@@ -43,6 +43,9 @@
      
       // When running, the dynamic animator calls the action block on every animation step.
       //@property (nonatomic,copy) void (^action)(void);
+      // 自定义的操作
+      // 在每一个动画帧，动画类回调用每个行为的action块，可以在这个添加想要的功能，但是由于频繁调用，性能至关重要
+      // 通常用于在达到一定条件下修改的行为
     self.action = ^{
       TearOffBehavior *strongself = weakself;
       
