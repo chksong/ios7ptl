@@ -28,6 +28,8 @@
   self = [super init];
   if (self) {
     UICollisionBehavior *collisionBehavior = [UICollisionBehavior new];
+      
+    // 很容易就可以将物体保留在他们的参考视图内
     collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
     [self addChildBehavior:collisionBehavior];
 
