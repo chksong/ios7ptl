@@ -24,6 +24,7 @@
 
 @class DraggableView;
 
+// 
 typedef void(^TearOffHandler)(DraggableView *tornView,
                               DraggableView *newPinView);
 
