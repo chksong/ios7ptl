@@ -207,9 +207,10 @@
 				ORGANIZATIONNAME = "Steinlogic Consulting and Training Pte Ltd";
 				TargetAttributes = {
 					ABECCE9F17C3546E00831500 = {
-						DevelopmentTeam = P898K98WCW;
+						DevelopmentTeam = 96Z52J6CY7;
 					};
 					ABECCEC017C3546E00831500 = {
+						DevelopmentTeam = 96Z52J6CY7;
 						TestTargetID = ABECCE9F17C3546E00831500;
 					};
 				};

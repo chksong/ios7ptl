@@ -34,7 +34,9 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   UIImage *image = [UIImage imageNamed:@"pushing"];
-  self.view.layer.contentsScale = [[UIScreen mainScreen] scale];
+  //self.view.layer.contentsScale = [[UIScreen mainScreen] scale];
+ 
+  NSLog(@"scale=%f" , [[UIScreen mainScreen] scale]) ;
   self.view.layer.contentsGravity = kCAGravityLeft ; //  kCAGravityBottom; //?? kCAGravityBottom
   self.view.layer.contents = (id)[image CGImage]; // contents 为时id类型，要复制为CGImageRef 而不是UIImage，要强制转换
   

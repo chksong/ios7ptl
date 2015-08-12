@@ -62,7 +62,7 @@
   anim.fromValue = @1.0;
   anim.toValue = @0.0;
   anim.autoreverses = YES;
-  anim.repeatCount = INFINITY; //不限期的 不停
+  anim.repeatCount = 1; //不限期的 不停
   anim.duration = 2.0;
   [layer addAnimation:anim forKey:@"anim"];
 

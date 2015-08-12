@@ -214,8 +214,15 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Rob Napier";
 				TargetAttributes = {
+					FBFD1B8A17E5130600CB9C84 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					FBFD1BAB17E5130600CB9C84 = {
-						TestTargetID = FBFD1B8A17E5130600CB9C84 /* TearOff */;
+						TestTargetID = FBFD1B8A17E5130600CB9C84;
 					};
 				};
 			};
@@ -402,6 +409,7 @@
 				GCC_PREFIX_HEADER = "TearOff/TearOff-Prefix.pch";
 				INFOPLIST_FILE = "TearOff/TearOff-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -415,6 +423,7 @@
 				GCC_PREFIX_HEADER = "TearOff/TearOff-Prefix.pch";
 				INFOPLIST_FILE = "TearOff/TearOff-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

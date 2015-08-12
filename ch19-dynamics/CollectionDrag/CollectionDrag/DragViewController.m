@@ -35,14 +35,23 @@
 }
 
 - (IBAction)handleLongPress:(UIGestureRecognizer *)g {
+
+  // 使用UIKit 动力学的一个尤其的用途是影响 UIcollectionVIew 布局，可以使用这些布局 创建各种令人兴奋的 引人入胜的交互。
+  // as a quick reminder ,UICollectionView relies UICollectionViewLayout to generate a UICollectonViewLayoutAttributes
+  // object for each item,    this layout attributes object defines the center and transform among other things.
+  // the matches exactly with <UIDynamicItem> which also defines a center and transform
+  // this means that a dynamic animator can modify layout attributes over time according to behaviors
   DragLayout *dragLayout = (DragLayout *)self.collectionViewLayout;
+    
   CGPoint location = [g locationInView:self.collectionView];
 
   // Find the indexPath and cell being dragged
+  // 找到被拖放的 indexPath 和 cell
   NSIndexPath *indexPath = [self.collectionView
                             indexPathForItemAtPoint:location];
   UICollectionViewCell *cell = [self.collectionView
                                 cellForItemAtIndexPath:indexPath];
+    
 
   UIGestureRecognizerState state = g.state;
   if (state == UIGestureRecognizerStateBegan) {

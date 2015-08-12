@@ -136,8 +136,10 @@ const NSUInteger kSliceCount = 6;
 }
 
 - (NSArray *)sliceView:(UIView *)view intoRows:(NSUInteger)rows columns:(NSInteger)columns {
+    
   UIGraphicsBeginImageContext(view.bounds.size);
   [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:NO];
+    
   CGImageRef image = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
   UIGraphicsEndImageContext();
 

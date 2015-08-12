@@ -22,6 +22,8 @@
 //
 #import <UIKit/UIKit.h>
 
+// 拖拽效果视图
+
 @interface DraggableView : UIView <NSCopying>
 - (instancetype)initWithFrame:(CGRect)frame
                      animator:(UIDynamicAnimator *)animator;

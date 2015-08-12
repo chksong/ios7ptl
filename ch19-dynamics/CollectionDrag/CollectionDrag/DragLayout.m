@@ -37,19 +37,22 @@
                    initWithCollectionViewLayout:self];
 
   UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:self.indexPath];
+    
   // Raise the item above its peers
-  attributes.zIndex += 1;
+  attributes.zIndex += 13;
 
   self.behavior = [[UIAttachmentBehavior alloc] initWithItem:attributes
                                             attachedToAnchor:p];
   self.behavior.length = 0;
-  self.behavior.frequency = 10;
+  self.behavior.frequency = 5;
   [self.animator addBehavior:self.behavior];
 
   // Add a little resistance to keep things stable
+ // 他对 动力项 赋值 物理属性， 例如可以使用动力项行为给一个动力箱 设置密度和弹性
+    
   UIDynamicItemBehavior *dynamicItem = [[UIDynamicItemBehavior alloc]
                                         initWithItems:@[attributes]];
-  dynamicItem.resistance = 10;
+  dynamicItem.resistance = 3;
   [self.animator addBehavior:dynamicItem];
 
   [self updateDragLocation:p];

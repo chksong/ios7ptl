@@ -17,7 +17,7 @@
 
 - (void)drawRect:(CGRect)rect {
   [[UIColor redColor] setFill];
-  [[UIBezierPath bezierPathWithOvalInRect:self.bounds] fill];
+  [[UIBezierPath bezierPathWithRect:self.bounds] fill];
 }
 
 @end

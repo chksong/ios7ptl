@@ -44,8 +44,8 @@
   
   CABasicAnimation *fadeAnim = [CABasicAnimation 
                                 animationWithKeyPath:@"opacity"];
-  fadeAnim.fromValue = @0.4;
-  fadeAnim.toValue = @1.0;
+  fadeAnim.fromValue = @0.5;
+  fadeAnim.toValue = @0.1;
 
   CABasicAnimation *growAnim = [CABasicAnimation
                                 animationWithKeyPath:
@@ -56,7 +56,7 @@
   CAAnimationGroup *groupAnim = [CAAnimationGroup animation];
   groupAnim.animations = @[fadeAnim, growAnim];
   
-  actions[kCAOnOrderIn] = groupAnim;
+  actions[kCAOnOrderIn] = groupAnim; //
   
   circleLayer.actions = actions;
 

@@ -10,6 +10,8 @@
 
 #import "MKAppDelegate.h"
 
+// 注意 segu 在uI中的使用。。。。
+
 int main(int argc, char *argv[])
 {
   @autoreleasepool {

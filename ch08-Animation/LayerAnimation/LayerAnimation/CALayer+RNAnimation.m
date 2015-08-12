@@ -39,8 +39,8 @@
   CABasicAnimation *anim;
   anim = [CABasicAnimation animationWithKeyPath:keyPath];
   anim.duration = duration;
-  anim.beginTime = CACurrentMediaTime() + delay;
-  anim.fillMode = kCAFillModeBoth;
+  anim.beginTime = CACurrentMediaTime() + delay; // 当前时间+
+  anim.fillMode = kCAFillModeBoth;  //
   anim.fromValue = [[self presentationLayer] valueForKey:keyPath];
   anim.toValue = value;
   [self addAnimation:anim forKey:keyPath];
