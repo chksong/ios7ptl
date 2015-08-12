@@ -27,6 +27,8 @@
 #import "ViewController.h"
 #import <objc/runtime.h>
 
+//关联是函数 使用 objc_setAssociatedObject
+
 @implementation ViewController
 
 static const char kRepresentedObject;
