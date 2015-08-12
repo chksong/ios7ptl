@@ -44,10 +44,13 @@ enum PhotoOrientation {
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-  NSArray * photosArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self photosDirectory] error:nil];
+    NSString *str_path = [self photosDirectory] ;
+    
+  NSArray * photosArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:str_path error:nil];
   self.photosCache = [NSMutableDictionary dictionary];
   self.photoOrientation = [NSMutableArray array];
   self.photosList = nil;
+    
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     
     [photosArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
